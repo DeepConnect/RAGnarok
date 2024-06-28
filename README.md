@@ -106,4 +106,4 @@ If you use RAGnarok in your research, please cite:
 
 ## Contact
 
-For any questions or feedback, please open an issue on GitHub or contact [your-email@example.com](mailto:rahulkumar2312016@gmail.com).
+For any questions or feedback, please open an issue on GitHub or contact [KnightOwl](mailto:rahulkumar2312016@gmail.com).
