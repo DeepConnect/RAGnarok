@@ -1,7 +1,10 @@
+
 # RAGnarok
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/)
+
+![RAGnarok Banner](https://github.com/DeepConnect/RAGnarok/assets/29411278/972cd800-4f25-43b5-ae65-91d8c7fc1917)
 
 RAGnarok: Unleash the power of truth in your Retrieval-Augmented Generation systems!
 
