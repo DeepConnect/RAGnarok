@@ -8,25 +8,43 @@
 
 RAGnarok: Unleash the power of truth in your Retrieval-Augmented Generation systems!
 
-## 🌟 Introduction
+# RAGnarok
 
-RAGnarok is an open-source framework designed to verify and enhance the accuracy of Retrieval-Augmented Generation (RAG) systems. Just as Ragnarök in Norse mythology represents a great battle leading to the rebirth of the world, RAGnarok stands as a formidable tool in the battle against misinformation, paving the way for more reliable AI-generated content.
+RAGnarok is an open-source framework for verifying and enhancing the accuracy of Retrieval-Augmented Generation (RAG) systems. It uses advanced NLP techniques and efficient similarity search to provide comprehensive assessments of RAG-generated responses.
 
-## 🚀 Features
+## Features
 
-- Comprehensive accuracy checking for RAG-generated responses
-- Advanced algorithms to detect inconsistencies and factual errors
-- Customizable validation rules to fit your specific use case
-- Detailed reporting and analytics on RAG performance
-- Easy integration with popular RAG frameworks and libraries
+- Semantic similarity checking using FAISS HNSW for efficient vector search
+- Accuracy assessment combining keyword matching and semantic similarity
+- Consistency checking against retrieved documents
+- Relevance assessment to the original question
+- Issue identification for potential problems in responses
+- Overall scoring system for quick quality assessment
 
-## 🛠 Installation
+## Installation
 
 ```bash
 pip install ragnarok
 ```
 
-## 🏁 Quick Start
+Note: RAGnarok requires Python 3.7+.
+
+## Dependencies
+
+RAGnarok depends on the following libraries:
+- sentence-transformers
+- faiss-cpu (or faiss-gpu for GPU support)
+- numpy
+
+You can install these dependencies using:
+
+```bash
+pip install sentence-transformers faiss-cpu numpy
+```
+
+## Usage
+
+Here's a basic example of how to use RAGnarok:
 
 ```python
 from ragnarok import RAGnarok
@@ -34,29 +52,65 @@ from ragnarok import RAGnarok
 # Initialize RAGnarok
 checker = RAGnarok()
 
-# Check a RAG-generated response
+# Prepare your RAG response and context
+rag_response = "The capital of France is Paris. It is known for the Eiffel Tower."
+context = {
+    "question": "What is the capital of France?",
+    "retrieved_docs": [
+        "Paris is the capital and most populous city of France.",
+        "France is a country in Western Europe with several overseas regions and territories.",
+        "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris."
+    ],
+    "expected_response": "The capital of France is Paris, which is famous for landmarks like the Eiffel Tower."
+}
+
+# Verify the response
 result = checker.verify(rag_response, context)
 
-print(f"Accuracy Score: {result.accuracy_score}")
+# Print the results
+print(f"Overall Score: {result.overall_score:.2f}")
+print(f"Accuracy Score: {result.accuracy_score:.2f}")
+print(f"Consistency Score: {result.consistency_score:.2f}")
+print(f"Relevance Score: {result.relevance_score:.2f}")
+print(f"Semantic Similarity Score: {result.semantic_similarity_score:.2f}")
 print(f"Issues Found: {result.issues}")
 ```
 
-## 📚 Documentation
+## Configuration
 
-For full documentation, visit [ragnarok.readthedocs.io](https://ragnarok.readthedocs.io).
+RAGnarok can be configured by passing a configuration dictionary when initializing:
 
-## 🤝 Contributing
+```python
+config = {
+    "model_name": "all-MiniLM-L6-v2",
+    "hnsw_m": 32,
+    "hnsw_ef_construction": 40,
+    "hnsw_ef_search": 16
+}
+checker = RAGnarok(config)
+```
+
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for more details.
 
-## 📄 License
+## License
 
 RAGnarok is released under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## 🙏 Acknowledgements
+## Citation
 
-RAGnarok stands on the shoulders of giants. We'd like to thank the open-source community and the creators of the libraries and tools that made this project possible.
+If you use RAGnarok in your research, please cite:
 
----
+```
+@software{ragnarok,
+  title = {RAGnarok: A Framework for Verifying Retrieval-Augmented Generation},
+  author = {Your Name},
+  year = {2024},
+  url = {https://github.com/yourusername/ragnarok}
+}
+```
 
-Unleash RAGnarok and let the era of accurate, reliable RAG systems begin! 🌩️
+## Contact
+
+For any questions or feedback, please open an issue on GitHub or contact [your-email@example.com](mailto:rahulkumar2312016@gmail.com).
